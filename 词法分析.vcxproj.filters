@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="词法分析.cpp">
+    <ClCompile Include="lex.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="KeyWord.cpp">

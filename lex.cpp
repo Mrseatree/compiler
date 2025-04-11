@@ -19,7 +19,7 @@ void get_nbc()
 	}
 }
 
-void get_char(char c)
+void get_char()
 {
 	c = fgetc(fp);
 	if (c == '\n')
@@ -33,7 +33,7 @@ void get_char(char c)
 // 		tolower(c);
 }
 
-void restract(char c)
+void restract()
 {
 	ungetc(c, fp);
 	c = token.back();
@@ -75,7 +75,7 @@ vector<TokenType> lex()
 		{
 		case 0:
 			token.clear();
-			get_char(c);
+			get_char();
 			get_nbc();
 			switch (c)
 			{
@@ -127,249 +127,249 @@ vector<TokenType> lex()
 			}
 		case 1:
 			token.push_back(c);
-			get_char(c);
+			get_char();
 			switch (c)
 			{
 			case '=':token.push_back(c); state = 0; token_stream.emplace_back(TokenType::ASSIGN,token,line,col); break;
-			default:ungetc(c, fp); state = 0; token_stream.emplace_back(TokenType::COLON,token,line,col); break;
+			default:restract(); state = 0; token_stream.emplace_back(TokenType::COLON,token,line,col); break;
 			}
 			break;
 		case 2:
 			token.push_back(c);
-			get_char(c);
+			get_char();
 			switch (c)
 			{
 			case '=':token.push_back(c); state = 0; token_stream.emplace_back(TokenType::GREATER_EQUAL, token, line, col); break;
-			default:ungetc(c, fp); state = 0; token_stream.emplace_back(TokenType::GREATER, token, line, col); break;
+			default:restract(); state = 0; token_stream.emplace_back(TokenType::GREATER, token, line, col); break;
 			}
 			break;
 		case 3:
 			token.push_back(c);
-			get_char(c);
+			get_char();
 			switch (c)
 			{
 			case '=':token.push_back(c); state = 0; token_stream.emplace_back(TokenType::LESS_EQUAL, token, line, col); break;
 			case '>':token.push_back(c); state = 0; token_stream.emplace_back(TokenType::NOT_EQUAL, token, line, col); break;
-			default:ungetc(c, fp); state = 0; token_stream.emplace_back(TokenType::LESS, token, line, col); break;
+			default:restract(); state = 0; token_stream.emplace_back(TokenType::LESS, token, line, col); break;
 			}
 			break;
 		case 4:
 			token.push_back(c);
-			get_char(c);
+			get_char();
 			switch (c)
 			{
 			case 'O':
 			case 'o':state = 11; break;
-			default:ungetc(c, fp); state = 101; break;
+			default:restract(); state = 101; break;
 			}
 			break;
 		case 5:
 			token.push_back(c);
-			get_char(c);
+			get_char();
 			switch (c)
 			{
 			case 'I':
 			case 'i':state = 13; break;
-			default:ungetc(c, fp); state = 101; break;
+			default:restract(); state = 101; break;
 			}
 			break;
 		case 6:
 			token.push_back(c);
-			get_char(c);
+			get_char();
 			switch (c)
 			{
 			case 'N':
 			case 'n':state = 16; break;
-			default:ungetc(c, fp); state = 101; break;
+			default:restract(); state = 101; break;
 			}
 			break;
 		case 7:
 			token.push_back(c);
-			get_char(c);
+			get_char();
 			switch (c)
 			{
 			case 'R':
 			case 'r':state = 18; break;
-			default:ungetc(c, fp); state = 101; break;
+			default:restract(); state = 101; break;
 			}
 			break;
 		case 8:
 			token.push_back(c);
-			get_char(c);
+			get_char();
 			switch (c)
 			{
 			case 'H':
 			case 'h':state = 19; break;
-			default:restract(c); state = 101; break;
+			default:restract(); state = 101; break;
 			}
 			break;
 		case 9:
 			token.push_back(c);
-			get_char(c);
+			get_char();
 			switch (c)
 			{
 			case 'O':
 			case 'o':state = 22; break;
-			default:restract(c); state = 101; break;
+			default:restract(); state = 101; break;
 			}
 			break;
 		case 10:
 			token.push_back(c);
-			get_char(c);
+			get_char();
 			switch (c)
 			{
 			case 'N':
 			case 'n':state = 24; break;
-			default:restract(c); state = 101; break;
+			default:restract(); state = 101; break;
 			}
 			break;
 		case 11:
 			token.push_back(c);
-			get_char(c);
+			get_char();
 			switch (c)
 			{
 			case 'D':
 			case 'd':state = 12; break;
-			default:ungetc(c, fp); state = 101; break;
+			default:restract(); state = 101; break;
 			}
 			break;
 		case 12:
 			token.push_back(c);
-			get_char(c);
+			get_char();
 			switch (c)
 			{
 			case ' ':state = 0; token_stream.emplace_back(TokenType::MOD, token, line, col); break;
-			default:ungetc(c, fp); state = 101; break;
+			default:restract(); state = 101; break;
 			}
 			break;
 		case 13:
 			token.push_back(c);
-			get_char(c);
+			get_char();
 			switch (c)
 			{
 			case 'V':
 			case 'v':state = 15; break;
-			default:ungetc(c, fp); state = 101; break;
+			default:restract(); state = 101; break;
 			}
 			break;
 		case 14:
 			token.push_back(c);
-			get_char(c);
+			get_char();
 			switch (c)
 			{
 			case 'D':
 			case 'd':state = 15; break;
-			default:ungetc(c, fp); state = 101; break;
+			default:restract(); state = 101; break;
 			}
 			break;
 		case 15:
 			token.push_back(c);
-			get_char(c);
+			get_char();
 			switch (c)
 			{
 			case ' ': state = 0; token_stream.emplace_back(TokenType::DIV, token, line, col); break;
-			default:ungetc(c, fp); state = 101; break;
+			default:restract(); state = 101; break;
 			}
 			break;
 		case 16:
 			token.push_back(c);
-			get_char(c);
+			get_char();
 			switch (c)
 			{
 			case 'D':
 			case 'd':state = 17; break;
-			default:ungetc(c, fp); state = 101; break;
+			default:restract(); state = 101; break;
 			}
 			break;
 		case 17:
 			token.push_back(c);
-			get_char(c);
+			get_char();
 			switch (c)
 			{
 			case ' ':state = 0; token_stream.emplace_back(TokenType::AND, token, line, col); break;
-			default:ungetc(c, fp); state = 101; break;
+			default:restract(); state = 101; break;
 			}
 			break;
 		case 18:
 			token.push_back(c);
-			get_char(c);
+			get_char();
 			switch (c)
 			{
 			case ' ':state = 0; token_stream.emplace_back(TokenType::OR, token, line, col); break;
-			default:ungetc(c, fp); state = 101; break;
+			default:restract(); state = 101; break;
 			}
 			break;
 		case 19:
 			token.push_back(c);
-			get_char(c);
+			get_char();
 			switch (c)
 			{
 			case 'L':
 			case 'l':state = 20; break;
 			case 'R':
 			case 'r':state = 21; break;
-			default:restract(c); state = 101; break;
+			default:restract(); state = 101; break;
 			}
 			break;
 		case 20:
 			token.push_back(c);
-			get_char(c);
+			get_char();
 			switch(c)
 			{
 			case ' ':state = 0; token_stream.emplace_back(TokenType::LEFT_SHIFT, token, line, col); break;
-			default:restract(c); state = 101; break;
+			default:restract(); state = 101; break;
 			}
 			break;
 		case 21:
 			token.push_back(c);
-			get_char(c);
+			get_char();
 			switch (c)
 			{
 			case ' ':state = 0; token_stream.emplace_back(TokenType::RIGHT_SHIFT, token, line, col); break;
-			default:restract(c); state = 101; break;
+			default:restract(); state = 101; break;
 			}
 			break;
 		case 22:
 			token.push_back(c);
-			get_char(c);
+			get_char();
 			switch (c)
 			{
 			case 'T':
 			case 't':state = 23; break;
-			default:restract(c); state = 101; break;
+			default:restract(); state = 101; break;
 			}
 			break;
 		case 23:
 			token.push_back(c);
-			get_char(c);
+			get_char();
 			switch (c)
 			{
 			case ' ':state = 0; token_stream.emplace_back(TokenType::NOT, token, line, col); break;
-			default:restract(c); state = 101; break;
+			default:restract(); state = 101; break;
 			}
 			break;
 		case 24:
 			token.push_back(c);
-			get_char(c);
+			get_char();
 			switch (c)
 			{
 			case ' ':state = 0; token_stream.emplace_back(TokenType::IN, token, line, col); break;
-			default:restract(c); state = 101; break;
+			default:restract(); state = 101; break;
 			}
 			break;
 		case 51:
 			token.push_back(c);
-			get_char(c);
+			get_char();
 			switch (c)
 			{
 			case '.':token.push_back(c); state = 0; token_stream.emplace_back(TokenType::DOTDOT, token, line, col); break;
-			default:restract(c); state = 0; token_stream.emplace_back(TokenType::DOT, token, line, col); break;
+			default:restract(); state = 0; token_stream.emplace_back(TokenType::DOT, token, line, col); break;
 			}
 			break;
 
 		case 101:
 			token.push_back(c);
-			get_char(c);
+			get_char();
 			if (c >= 'a' && c <= 'z' || c >= 'A' && c <= 'Z' || c >= '0' && c <= '9')
 			{
 				state = 101;
@@ -390,32 +390,32 @@ vector<TokenType> lex()
 		//大括号多行注释
 		case 301:
 			token.push_back(c);
-			get_char(c);
+			get_char();
 			while (c != '}'&&c!=EOF)
 			{
-				get_char(c);
+				get_char();
 			}
 			break;
 		//小括号星号多行注释
 		case 302:
 			token.push_back(c);
-			get_char(c);
+			get_char();
 			if (c == '*')
 			{
 				state = 303; 
 			}
 			else
 			{
-				restract(c);
+				restract();
 				state = 0;
 				token_stream.emplace_back(TokenType::LBRACKET, token, line, col);
 			}
 			break;
 		case 303:
-			get_char(c);
+			get_char();
 			while (c != '*'&&c!=EOF)
 			{
-				get_char(c);
+				get_char();
 			}
 			if (c == '*')
 			{
@@ -423,7 +423,7 @@ vector<TokenType> lex()
 			}
 			break;
 		case 304:
-			get_char(c);
+			get_char();
 			if (c == ')')
 			{
 				state = 0;
@@ -436,7 +436,7 @@ vector<TokenType> lex()
 		//单行注释
 		case 305:
 			token.push_back(c);
-			get_char(c);
+			get_char();
 			if (c == '/')
 			{
 				state = 306;
@@ -450,7 +450,7 @@ vector<TokenType> lex()
 		case 306:
 			while (c != '\n' && c != EOF)
 			{
-				get_char(c);
+				get_char();
 			}
 			break;
 		}
