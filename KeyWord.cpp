@@ -1,0 +1,50 @@
+#include"DataStructure.h"
+void init_keywords()
+{
+	keywords.push_back("program");
+	keywords.push_back("var");
+	keywords.push_back("const");
+	keywords.push_back("type");
+	keywords.push_back("function");
+	keywords.push_back("procedure");
+	keywords.push_back("begin");
+	keywords.push_back("end");
+	keywords.push_back("if");
+	keywords.push_back("then");
+	keywords.push_back("while");
+	keywords.push_back("do");
+	keywords.push_back("for");
+	keywords.push_back("to");
+	keywords.push_back("downto");
+	keywords.push_back("repeat");
+	keywords.push_back("until");
+	keywords.push_back("case");
+	keywords.push_back("of");
+	keywords.push_back("goto");
+	keywords.push_back("with");
+	keywords.push_back("in");
+
+	types.push_back(TokenType::PROGRAM);
+	types.push_back(TokenType::VAR);
+	types.push_back(TokenType::CONST);
+	types.push_back(TokenType::TYPE);
+	types.push_back(TokenType::FUNCTION);
+	types.push_back(TokenType::PROCEDURE);
+	types.push_back(TokenType::BEGIN);
+	types.push_back(TokenType::END);
+	types.push_back(TokenType::IF);
+	types.push_back(TokenType::THEN);
+	types.push_back(TokenType::WHILE);
+	types.push_back(TokenType::DO);
+	types.push_back(TokenType::FOR);
+	types.push_back(TokenType::TO);
+	types.push_back(TokenType::DOWNTO);
+	types.push_back(TokenType::REPEAT);
+	types.push_back(TokenType::UNTIL);
+	types.push_back(TokenType::CASE);
+	types.push_back(TokenType::OF);
+	types.push_back(TokenType::GOTO);
+	types.push_back(TokenType::WITH);
+	types.push_back(TokenType::IN);
+	
+}
