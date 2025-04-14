@@ -21,9 +21,21 @@
     <ClCompile Include="KeyWord.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="testMain.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ErrorLogs.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="cifa_function.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DataStructure.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Error.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
